@@ -1,0 +1,29 @@
+CREATE TABLE `users` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT,
+`name` TEXT,
+);
+
+CREATE TABLE `links` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT,
+`url` TEXT,
+`user_id` INTEGER
+FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE `comments` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT,
+`content` TEXT,
+`user_id` INTEGER,
+`link_id` INTEGER,
+FOREIGN KEY(user_id) REFERENCES users(id),
+FOREIGN KEY(link_id) REFERENCES links(id)
+);
+
+CREATE TABLE `child_comments` (
+`id` INTEGER PRIMARY KEY AUTOINCREMENT,
+`content` TEXT,
+`user_id` INTEGER,
+`comment_id` INTEGER,
+FOREIGN KEY(user_id) REFERENCES users(id),
+FOREIGN KEY(comment_id) REFERENCES comments(id)
+);
