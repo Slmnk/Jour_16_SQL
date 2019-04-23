@@ -27,7 +27,7 @@ FOREIGN KEY(category_id) REFERENCES categories(id)
 CREATE TABLE `tags` (
 `id` INTEGER PRIMARY KEY AUTOINCREMENT,
 `title` TEXT,
-`color` TEXT # à check !!
+`color` TEXT
 );
 
 # MOOCademy
@@ -42,25 +42,20 @@ CREATE TABLE `leçons` (
 `ìd` INTEGER PRIMARY KEY AUTOINCREMENT,
 `titre` TEXT,
 `body` TEXT,
-`cours_id` INTEGER
+`cours_id` INTEGER,
 FOREIGN KEY(cours_id) REFERENCES cours(id)
 );
 
 # The Hacking Pinterest
 
-CREATE TABLE `users` (
-`id` INTEGER PRIMARY KEY AUTOINCREMENT,
-`name` TEXT,
-);
-
 CREATE TABLE `pins` (
 `id` INTEGER PRIMARY KEY AUTOINCREMENT,
 `url` TEXT,
-`user_id` INTEGER
+`user_id` INTEGER,
 FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
-CREATE TABLE `comments` (
+CREATE TABLE `commentaires` (
 `id` INTEGER PRIMARY KEY AUTOINCREMENT,
 `content` TEXT,
 `user_id` INTEGER,
@@ -71,15 +66,10 @@ FOREIGN KEY(pin_id) REFERENCES pins(id)
 
 # The Hacking News
 
-CREATE TABLE `users` (
-`id` INTEGER PRIMARY KEY AUTOINCREMENT,
-`name` TEXT,
-);
-
 CREATE TABLE `links` (
 `id` INTEGER PRIMARY KEY AUTOINCREMENT,
 `url` TEXT,
-`user_id` INTEGER
+`user_id` INTEGER,
 FOREIGN KEY(user_id) REFERENCES users(id)
 );
 
